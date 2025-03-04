@@ -43,12 +43,12 @@ func process_player_input():
 		anim_state.travel("Idle")
 		
 func move(delta):
-	percent_moved_to_next_tile += walk_speed*delta
 	var desired_step = input_direction*TILE_SIZE/2
 	ray.target_position = desired_step
 	ray.force_raycast_update()
 	
 	if !ray.is_colliding():
+		percent_moved_to_next_tile += walk_speed*delta
 		if percent_moved_to_next_tile >= 1.0:
 			position = initial_position+(TILE_SIZE*input_direction)
 			percent_moved_to_next_tile = 0
