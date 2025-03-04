@@ -5,6 +5,7 @@ const TILE_SIZE = 16
 
 @onready var anim_tree = $AnimationTree
 @onready var anim_state = anim_tree.get("parameters/playback")
+@onready var ray = $RayCast2D
 
 var initial_position =  Vector2(0, 0)
 var input_direction = Vector2(0, 0)
@@ -43,9 +44,16 @@ func process_player_input():
 		
 func move(delta):
 	percent_moved_to_next_tile += walk_speed*delta
-	if percent_moved_to_next_tile >= 1.0:
-		position = initial_position+(TILE_SIZE*input_direction)
-		percent_moved_to_next_tile = 0
-		is_moving = false
+	var desired_step = input_direction*TILE_SIZE/2
+	ray.target_position = desired_step
+	ray.force_raycast_update()
+	
+	if !ray.is_colliding():
+		if percent_moved_to_next_tile >= 1.0:
+			position = initial_position+(TILE_SIZE*input_direction)
+			percent_moved_to_next_tile = 0
+			is_moving = false
+		else:
+			position = initial_position + (TILE_SIZE*input_direction*percent_moved_to_next_tile)
 	else:
-		position = initial_position + (TILE_SIZE*input_direction*percent_moved_to_next_tile)
+		is_moving = false	
