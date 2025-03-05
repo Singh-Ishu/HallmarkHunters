@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://glwpvfxon3t4"]
+[gd_scene load_steps=7 format=3 uid="uid://glwpvfxon3t4"]
 
 [ext_resource type="PackedScene" uid="uid://dw4lhfy3nj46t" path="res://player.tscn" id="1_c7s6e"]
 [ext_resource type="Texture2D" uid="uid://bc6njq2u3njqd" path="res://Assets/MainSet.png" id="2_wijl4"]
+[ext_resource type="Script" uid="uid://q6yrhvjpvth8" path="res://scene_change_trigger.gd" id="3_e0an3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e0an3"]
 texture = ExtResource("2_wijl4")
@@ -308,6 +309,9 @@ terrain_set_0/terrain_0/name = "Mall Walls"
 terrain_set_0/terrain_0/color = Color(0.304765, 0.355038, 0.649002, 1)
 sources/0 = SubResource("TileSetAtlasSource_e0an3")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5pve"]
+size = Vector2(48, 48)
+
 [node name="Map" type="Node2D"]
 
 [node name="MallTileMap" type="TileMap" parent="."]
@@ -318,3 +322,10 @@ layer_0/tile_data = PackedInt32Array(-196604, 131072, 19, -262140, 196608, 19, -
 [node name="Player" parent="." instance=ExtResource("1_c7s6e")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="SceneChangeTrigger" type="Area2D" parent="."]
+script = ExtResource("3_e0an3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneChangeTrigger"]
+position = Vector2(120, -56)
+shape = SubResource("RectangleShape2D_p5pve")
