@@ -34,15 +34,15 @@ expand_mode = 5
 stretch_mode = 5
 
 [node name="FakeButton" type="Button" parent="HallmarkGame"]
-offset_left = 80.0
-offset_top = 96.0
-offset_right = 127.0
-offset_bottom = 127.0
+offset_left = 64.0
+offset_top = 80.0
+offset_right = 111.0
+offset_bottom = 111.0
 text = "FAKE"
 
 [node name="RealButton" type="Button" parent="HallmarkGame"]
-offset_left = -64.0
-offset_top = 96.0
-offset_right = -17.0
-offset_bottom = 127.0
+offset_left = -80.0
+offset_top = 80.0
+offset_right = -33.0
+offset_bottom = 111.0
 text = "REAL"
