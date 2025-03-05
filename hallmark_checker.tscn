@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkx50penmbn8r"]
+[gd_scene load_steps=7 format=3 uid="uid://bkx50penmbn8r"]
 
 [ext_resource type="PackedScene" uid="uid://dw4lhfy3nj46t" path="res://player.tscn" id="1_l8ent"]
 [ext_resource type="PackedScene" uid="uid://b77673an6ejw5" path="res://mall_tile_map.tscn" id="2_3ae0j"]
 [ext_resource type="Script" uid="uid://d2ibxbo4dqktl" path="res://hallmark_game.gd" id="3_bomk7"]
 [ext_resource type="Texture2D" uid="uid://cop8qekfpo1ta" path="res://Assets/Hallmark_images/Real/Img_1.png" id="4_f165w"]
+[ext_resource type="Texture2D" uid="uid://vk38qnoedpin" path="res://Assets/Hallmark_images/Real/Img_2.png" id="5_sveah"]
+[ext_resource type="Texture2D" uid="uid://yvq36dgilw4t" path="res://Assets/Hallmark_images/Fake/Img_1.jpg" id="6_fo36v"]
 
 [node name="HallmarkChecker" type="Node2D"]
 
@@ -20,7 +22,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_bomk7")
-real_images = Array[Texture2D]([ExtResource("4_f165w")])
+real_images = Array[Texture2D]([ExtResource("4_f165w"), ExtResource("5_sveah")])
+fake_images = Array[Texture2D]([ExtResource("6_fo36v")])
 
 [node name="HallmarkDisplay" type="TextureRect" parent="HallmarkGame"]
 offset_left = -96.0
