@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://glwpvfxon3t4"]
+[gd_scene load_steps=11 format=3 uid="uid://glwpvfxon3t4"]
 
 [ext_resource type="PackedScene" uid="uid://dw4lhfy3nj46t" path="res://player.tscn" id="1_c7s6e"]
 [ext_resource type="Texture2D" uid="uid://bc6njq2u3njqd" path="res://Assets/MainSet.png" id="2_wijl4"]
@@ -312,6 +312,94 @@ sources/0 = SubResource("TileSetAtlasSource_e0an3")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5pve"]
 size = Vector2(48, 48)
 
+[sub_resource type="Animation" id="Animation_e0an3"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333334, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_p5pve"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_urblq"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333334, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.966667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_urblq"]
+_data = {
+&"RESET": SubResource("Animation_p5pve"),
+&"fade_in": SubResource("Animation_urblq"),
+&"fade_out": SubResource("Animation_e0an3")
+}
+
 [node name="Map" type="Node2D"]
 
 [node name="MallTileMap" type="TileMap" parent="."]
@@ -329,3 +417,16 @@ script = ExtResource("3_e0an3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneChangeTrigger"]
 position = Vector2(120, -56)
 shape = SubResource("RectangleShape2D_p5pve")
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_urblq")
+}
+
+[node name="ColorRect" type="ColorRect" parent="Transition"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -352.0
+offset_top = -240.0
+offset_right = 320.0
+offset_bottom = 176.0
+color = Color(0, 0, 0, 1)
