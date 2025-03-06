@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8u1e3iop2mfg"]
+[gd_scene load_steps=3 format=3 uid="uid://c8u1e3iop2mfg"]
 
 [ext_resource type="Script" uid="uid://dpbo2luwnp4tp" path="res://game_over.gd" id="1_y26ei"]
+[ext_resource type="Script" uid="uid://wt5qkmxx4gm4" path="res://retry_button.gd" id="2_yxx3c"]
 
 [node name="game_over" type="Control"]
 layout_mode = 3
@@ -13,3 +14,12 @@ script = ExtResource("1_y26ei")
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 176.0
+
+[node name="RetryButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 112.0
+offset_right = 194.0
+offset_bottom = 143.0
+text = "Retry"
+script = ExtResource("2_yxx3c")
