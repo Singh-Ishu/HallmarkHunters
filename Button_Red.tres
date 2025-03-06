@@ -1,0 +1,19 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bxcmhebbut2ub"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oroab"]
+bg_color = Color(0.479382, 0.225358, 0.23581, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxwd3"]
+bg_color = Color(0.636483, 0.316532, 0.330387, 1)
+border_width_bottom = 5
+border_color = Color(0.43468, 0.146614, 0.185879, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 4
+shadow_offset = Vector2(2, 2)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxFlat_oroab")
+Button/styles/normal = SubResource("StyleBoxFlat_vxwd3")

@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkx50penmbn8r"]
+[gd_scene load_steps=11 format=3 uid="uid://bkx50penmbn8r"]
 
 [ext_resource type="PackedScene" uid="uid://b77673an6ejw5" path="res://mall_tile_map.tscn" id="2_3ae0j"]
 [ext_resource type="Script" uid="uid://d2ibxbo4dqktl" path="res://hallmark_game.gd" id="3_bomk7"]
 [ext_resource type="Texture2D" uid="uid://cop8qekfpo1ta" path="res://Assets/Hallmark_images/Real/Img_1.png" id="4_f165w"]
 [ext_resource type="Texture2D" uid="uid://vk38qnoedpin" path="res://Assets/Hallmark_images/Real/Img_2.png" id="5_sveah"]
 [ext_resource type="Texture2D" uid="uid://yvq36dgilw4t" path="res://Assets/Hallmark_images/Fake/Img_1.jpg" id="6_fo36v"]
+[ext_resource type="Theme" uid="uid://bxcmhebbut2ub" path="res://Button_Red.tres" id="6_l8lb3"]
+[ext_resource type="Theme" uid="uid://b7bbrpyvo41gq" path="res://Button_Green.tres" id="7_1gx62"]
+[ext_resource type="Texture2D" uid="uid://csye8terlexc0" path="res://Assets/Letter.png" id="8_1gx62"]
+[ext_resource type="Script" uid="uid://bcclob13k2tnt" path="res://letter.gd" id="8_g6j8x"]
+[ext_resource type="Texture2D" uid="uid://biacr6qod3xlv" path="res://Assets/Page.png" id="9_iogs2"]
 
 [node name="HallmarkChecker" type="Node2D"]
 
@@ -35,6 +40,7 @@ offset_left = 64.0
 offset_top = 96.0
 offset_right = 111.0
 offset_bottom = 127.0
+theme = ExtResource("6_l8lb3")
 text = "FAKE"
 
 [node name="RealButton" type="Button" parent="HallmarkGame"]
@@ -43,9 +49,53 @@ offset_left = -112.0
 offset_top = 96.0
 offset_right = -65.0
 offset_bottom = 127.0
+theme = ExtResource("7_1gx62")
 text = "REAL"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(1, 1.92)
 offset = Vector2(0, 20)
 zoom = Vector2(0.8, 0.8)
+
+[node name="LetterController" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_g6j8x")
+
+[node name="LetterButton" type="TextureButton" parent="LetterController"]
+offset_left = -192.0
+offset_top = 48.0
+offset_right = -144.0
+offset_bottom = 98.0
+texture_normal = ExtResource("8_1gx62")
+
+[node name="LetterPanel" type="TextureRect" parent="LetterController"]
+visible = false
+offset_left = -192.0
+offset_top = -96.0
+offset_right = 176.0
+offset_bottom = 128.0
+texture = ExtResource("9_iogs2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LetterController/LetterPanel"]
+layout_mode = 0
+offset_left = 32.0
+offset_right = 352.0
+offset_bottom = 224.0
+text = "Remember to check for three things:
+1) The Triangular BIS logo.
+2) The Purity Code of the format: xxKxxx
+3) The 6 digit alpha-numeric code provided by BIS.
+
+Remember to cross check by entering the code on the BIS Website to see if the entry matches the product or not."
+
+[node name="CloseButton" type="Button" parent="LetterController/LetterPanel"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 192.0
+offset_right = 386.0
+offset_bottom = 220.0
+theme = ExtResource("6_l8lb3")
+text = "CLOSE"
